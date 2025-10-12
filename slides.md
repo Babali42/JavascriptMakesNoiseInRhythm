@@ -20,7 +20,8 @@ coach : Sylvain Coudert
 
 ---
 
-# Intro : musique et rythme
+# Intro
+Musique et rythme
 
 ### Qu'est ce que la musique ?
 
@@ -40,7 +41,8 @@ https://fr.wikipedia.org/wiki/Musique
 
 ---
 
-#  Intro : Musique électronique : séquenceurs et boites à rythmes
+#  Intro
+Musique électronique : séquenceurs et boites à rythmes
 
 Image orgue de barbarie
 
@@ -56,7 +58,8 @@ Image logiciel de musique
 
 ---
 
-# Construction d'une boite à rythme simpliste : setTimeout()
+# Construction d'une boite à rythme simpliste
+Horloge JavaScript
 
 ## Code
 ```ts
@@ -81,21 +84,60 @@ let step: number = 0;
 
 ---
 
-# Construction d'une boite à rythme simpliste : setTimeout()
+# Construction d'une boite à rythme simpliste
+Horloge JavaScript
 
 ## Démonstration
 
 ---
 
-# Construction d'une boite à rythme simpliste : setTimeout()
+# Construction d'une boite à rythme simpliste
+Horloge JavaScript
 
 ## Inconvénients
 - Précision à la milliseconde
-- Horloge JavaScript
-  - Thread UI
+- Horloge JavaScript qui dépend beaucoup de ce qui se passe sur le thread JavaScript principale
+  - UI
   - Garbage collector
+- Pas utilisable pour des applications audios complexes
 
+## Solution
+So what can we do? Well, the best way to handle timing is to set up a collaboration between JavaScript timers (setTimeout(), setInterval() or requestAnimationFrame()
+- more on that later) and the audio hardware scheduling.
 
+---
+layout: image-right
 
+# the image source
+image: /settimeout-audio-event-4e03219617f57_1920.png
+imageFit: contain
+imagePosition: center
+imageWidth: 60%   # adjust how wide the image area is
+---
 
+# Construction d'une boite à rythme précise
+Synchronisation d'horloges
 
+---
+
+# Conclusion
+Résumé
+
+Notions :
+- timer
+- horloges
+
+Solution :
+- synchronisation d'horloge JavaScript avec horloges tierces (WebAudioAPI)
+
+Cette solution est utilisée dans de nombreuses applications web
+
+---
+
+# Conclusion
+Ouverture
+
+- Synchronisation avec l'UI :
+  - Utilisation d'une troisième horloge avec requestAnimationFrame()
+- Changement de tempo :
+  - TimeStrech

@@ -319,16 +319,10 @@ _
 
 ---
 
-# Sources
-_
-
-📖 SetTimeout() : https://developer.mozilla.org/fr/docs/Web/API/Window/setTimeout
-
-📖 A Tales of two clock - Chris Wilson - 2013 : https://web.dev/articles/audio-scheduling
-
-🖼️ Roland 808 - 1980 : https://www.roland.com/fr/products/tr-08/
-
+# Liens
 </> DrumBeatRepo : https://www.github.com/babali42/drumbeatrepo
+
+<img src="./images/qrcode.png" class="max-w-50 h-auto rounded-lg shadow-lg object-contain" />
 
 
 

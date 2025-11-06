@@ -17,10 +17,11 @@ themeConfig:
 
 # Plan
 
+- Présentation de DrumBeatRepo
 - Définitions
-- Construction d'une boîte à rythme naïve
-- Construction d'une boîte à rythme précise
-- Synchronisation avec les interfaces graphiques
+- Construction d'une boîte à rythme
+  - **naïve**
+  - **synchronisée**
 
 
 ---
@@ -70,17 +71,16 @@ Le rythme en musique est l'organisation dans le temps des événements musicaux.
 # Définitions
 Séquenceurs et boite à rythme
 
-### Boite à rythme / Drum Machine
+### Roland 808
 
 <img src="./TR08.avif" class="max-w-100 h-auto rounded-lg shadow-lg object-contain" />
 
-### Usages
+<!--
+Machine ou logiciel qui génère des boucles de batterie/percussions répétitives et utilise en interne un **séquenceur**
 
 - Musique assistée par ordinateur
 - Jeux vidéos
 
-<!--
-Machine ou logiciel qui génère des boucles de batterie/percussions répétitives et utilise en interne un **séquenceur**
 - En musique comme en **frontend**, tout dépend de la **synchronisation**
 - Les UIs modernes réagissent en temps réel : **animations**, **streams**, **events**
 - Avec **RxJS** ou la **programmation réactive**, on orchestre les événements  
@@ -134,9 +134,8 @@ permet de déclencher une fonction après un certain temps
 # Construction d'une boite à rythme
 Version naïve : minuteur JS
 
-## SetTimeout()
-- Appel récursif
-  - permet de déclencher une fonction à interval de temps régulier
+## SetTimeout() récursif
+- déclenche une fonction à interval de temps régulier
 
 ```javascript
 function loop(){
@@ -229,8 +228,16 @@ gantt
 ## Inconvénients
 - Précision à la milliseconde
 - Interférences avec thread JavaScript principal
+- Dérive d’horloge
 
 ---
+
+<!--
+Ne pas confondre avec un jitter ou avec une latence
+
+Dérive d’horloge → décalage progressif dans le temps (long terme).
+Jitter → fluctuations aléatoires d’un tick à l’autre (court terme).
+-->
 
 # Construction d'une boite à rythme
 Version synchronisée : WebAudioAPI

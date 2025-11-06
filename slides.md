@@ -1,13 +1,12 @@
 ---
 theme: meetup
 layout: intro
-lineNumbers: false
+lineNumbers: true
 themeConfig:
   title: Javascript fait du bruit... ...mais en rythme
   github: babali42/drumbeatrepo
 ---
 <script setup>
-import Footer from './components/Footer.vue';
 import FooterImage from './components/FooterImage.vue'
 </script>
 
@@ -18,7 +17,6 @@ import FooterImage from './components/FooterImage.vue'
 
 **Baptiste Lyet**
 
-<FooterImage />
 ---
 
 # Plan
@@ -49,7 +47,6 @@ Définitions de wikipedia
 https://fr.wikipedia.org/wiki/Rythme_(musique)
 https://fr.wikipedia.org/wiki/Musique
 -->
-<Footer />
 ---
 
 # Définitions
@@ -67,7 +64,6 @@ Le rythme en musique est l'organisation dans le temps des événements musicaux.
   <p class="mt-4 text-gray-500 text-sm">Comment lire une partition de batterie</p>
 </div>
 
-<Footer />
 ---
 layout: image-right
 image: TR08.avif
@@ -98,7 +94,6 @@ Machine ou logiciel qui génère des boucles de batterie/percussions répétitiv
 
 </v-clicks>
 
-<Footer />
 ---
 layout: image-right
 image: 8beat_example.jpg
@@ -120,7 +115,6 @@ Problématique
 - https://toolstud.io/music/bpm.php?bpm=176&bpm_unit=4%2F4&base=16
 - avec n > 75ms et n < 150ms
 
-<Footer />
 ---
 
 # Construction d'une boite à rythme
@@ -145,7 +139,6 @@ console.log("End");
 > Sample is played
 ```
 
-<Footer />
 ---
 
 # Construction d'une boite à rythme
@@ -172,7 +165,6 @@ loop()
 ```
 
 
-<Footer />
 ---
 
 # Construction d'une boite à rythme
@@ -200,7 +192,6 @@ function loop(): void {
 loop();
 ```
 
-<Footer />
 ---
 
 # Construction d'une boite à rythme
@@ -215,7 +206,6 @@ Version naïve : minuteur JS - Démo
   </p>
 </SlidevVideo>
 
-<Footer />
 ---
 
 # Construction d'une boite à rythme
@@ -229,7 +219,6 @@ Version naïve : minuteur JS
   - Garbage collector
 - Non utilisable pour des applications complexes
 
-<Footer />
 ---
 
 # Construction d'une boite à rythme
@@ -244,7 +233,6 @@ Version synchronisée : WebAudioAPI
   - WebAudioAPI
   - context.currentTime()
 
-<Footer />
 ---
 layout: image
 
@@ -255,7 +243,6 @@ backgroundSize: 50%
 # Construction d'une boite à rythme précise
 Code
 
-<Footer />
 ---
 
 # Construction d'une boite à rythme
@@ -270,7 +257,6 @@ Version synchronisée : WebAudioAPI - Démo
   </p>
 </SlidevVideo>
 
-<Footer />
 ---
 
 # Conclusion
@@ -295,7 +281,6 @@ _
 
 </v-click>
 
-<Footer />
 ---
 
 # Sources
@@ -309,5 +294,10 @@ _
 
 </> DrumBeatRepo : https://www.github.com/babali42/drumbeatrepo
 
-<Footer />
 ---
+
+<style>
+html {
+  font-size: 17px; /* 16 → 17px = 1.10× scale environ*/
+}
+</style>

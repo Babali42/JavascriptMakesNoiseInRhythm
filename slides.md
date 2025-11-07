@@ -26,6 +26,12 @@ themeConfig:
 
 ---
 
+# Présentation de DrumBeatRepo
+
+  https://www.drumbeatrepo.com
+
+---
+
 # Définitions
 Musique et rythme
 
@@ -113,9 +119,8 @@ Problématique
 
 ---
 
-# Construction d'une boite à rythme
-Version naïve : minuteur JS
-
+# Construction d'une boite à rythme - naïve
+_
 ## SetTimeout()
 - déclenche une fonction après un certain temps
 
@@ -134,9 +139,8 @@ permet de déclencher une fonction après un certain temps
 -->
 ---
 
-# Construction d'une boite à rythme
-Version naïve : minuteur JS
-
+# Construction d'une boite à rythme - naïve
+_
 ## SetTimeout() récursif
 - déclenche une fonction à interval de temps régulier
 
@@ -159,12 +163,11 @@ De toute façon le récursif ça ne me fait pas peur je fonce
 
 ---
 
-# Construction d'une boite à rythme
-Version naïve : minuteur JS
-
+# Construction d'une boite à rythme - naïve
+_
 ```ts {monaco-run} {autorun:false}
 const pattern = ["X"," "," "," ","X"," "," "," ","X"," "," "," ","X"," "," "," "];
-const audio = new Audio('https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/explosion%2001.wav');
+const audio = new Audio('https://soundcamp.org/sounds/381/kick/B/acoustic-kick-drum-one-shot-b-key-201-ywK.wav');
 
 let step = 0;
 
@@ -184,7 +187,7 @@ scheduler();
 
 ---
 
-# Construction d'une boite à rythme
+# Construction d'une boite à rythme - naïve
 
 <div class="w-full max-w-3xl mx-auto">
   <SlidevVideo controls class="w-full rounded-xl">
@@ -194,8 +197,7 @@ scheduler();
 
 ---
 
-# Construction d'une boite à rythme
-Version naïve : minuteur JS
+# Construction d'une boite à rythme - naïve
 
 ```mermaid
 gantt
@@ -231,8 +233,7 @@ Dérive d’horloge → décalage progressif dans le temps (long terme).
 Jitter → fluctuations aléatoires d’un tick à l’autre (court terme).
 -->
 
-# Construction d'une boite à rythme
-Version synchronisée : WebAudioAPI
+# Construction d'une boite à rythme - synchronisée
 
 💡 Au lieu de déclencher les sons au dernier moment, on planifie les événements à l’avance.
 
@@ -245,7 +246,7 @@ Version synchronisée : WebAudioAPI
 
 ---
 
-# Construction d'une boite à rythme
+# Construction d'une boite à rythme - synchronisée
 ```mermaid
 sequenceDiagram
     autonumber
@@ -268,7 +269,7 @@ sequenceDiagram
 
 ---
 
-# Construction d'une boite à rythme
+# Construction d'une boite à rythme - synchronisée
 Version synchronisée : WebAudioAPI
 
 <div style="max-height: 350px; overflow:auto;">
@@ -314,7 +315,7 @@ scheduler();
 
 ---
 
-# Construction d'une boite à rythme
+# Construction d'une boite à rythme - synchronisée
 
 <div class="w-full max-w-3xl mx-auto">
   <SlidevVideo controls class="w-full rounded-xl">

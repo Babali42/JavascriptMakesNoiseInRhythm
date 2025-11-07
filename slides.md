@@ -271,6 +271,11 @@ sequenceDiagram
 
 # Construction d'une boite à rythme - synchronisée
 
+<img src="./images/sync.png" class="max-h-100 h-auto rounded-lg shadow-lg object-contain" />
+---
+
+# Construction d'une boite à rythme - synchronisée
+
 <div style="max-height: 400px; overflow:auto;">
 
 ```ts {monaco-run} {autorun:false}
@@ -348,7 +353,7 @@ _
 
 ---
 
-# Merci !
+# Merci pour votre attention
 
 --> **Baptiste Lyet** - Développeur .NET/Angular @Sogilis
 

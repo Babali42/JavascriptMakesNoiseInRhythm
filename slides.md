@@ -164,7 +164,7 @@ De toute façon le récursif ça ne me fait pas peur je fonce
 ---
 
 # Construction d'une boite à rythme - naïve
-_
+
 ```ts {monaco-run} {autorun:false}
 const pattern = ["X"," "," "," ","X"," "," "," ","X"," "," "," ","X"," "," "," "];
 const audio = new Audio('https://soundcamp.org/sounds/381/kick/B/acoustic-kick-drum-one-shot-b-key-201-ywK.wav');
@@ -270,18 +270,17 @@ sequenceDiagram
 ---
 
 # Construction d'une boite à rythme - synchronisée
-Version synchronisée : WebAudioAPI
 
-<div style="max-height: 350px; overflow:auto;">
+<div style="max-height: 400px; overflow:auto;">
 
-```ts {monaco-run autorun=false}
+```ts {monaco-run} {autorun:false}
 const pattern = ["X"," "," "," ","X"," "," "," ","X"," "," "," ","X"," "," "," "];
 const lookahead = 0.100; // 100ms
 
 const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
 let kickBuffer: AudioBuffer, nextNoteTime = audioContext.currentTime, step = 0;
 
-fetch("/kick.wav")
+fetch("https://soundcamp.org/sounds/381/kick/B/acoustic-kick-drum-one-shot-b-key-201-ywK.wav")
     .then(res => res.arrayBuffer())
     .then(data => audioContext.decodeAudioData(data))
     .then(buffer => { kickBuffer = buffer; });

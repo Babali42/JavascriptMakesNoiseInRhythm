@@ -275,7 +275,7 @@ sequenceDiagram
 
 # Construction d'une boite à rythme - synchronisée
 
-<img src="./images/sync.png" class="max-h-100 h-auto rounded-lg shadow-lg object-contain" />
+<img src="./images/schema_v1.png" class="max-h-100 h-auto rounded-lg shadow-lg object-contain" />
 ---
 
 # Construction d'une boite à rythme - synchronisée

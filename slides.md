@@ -14,6 +14,10 @@ themeConfig:
 
 **Baptiste Lyet**
 
+<!--
+Aujourd'hui on va parler de javascript et de rythme
+-->
+
 ---
 
 # Plan
@@ -31,6 +35,11 @@ themeConfig:
 
   https://www.drumbeatrepo.com
 
+<!--
+C'est beau ça marche mais il y a eu des problèmes.
+
+Je vais vous présenter un des écueils et comment je suis passé dessus
+-->
 ---
 
 # Définitions
@@ -51,8 +60,8 @@ Caractéristiques :
 
 <!--
 Définitions de wikipedia
-https://fr.wikipedia.org/wiki/Rythme_(musique)
-https://fr.wikipedia.org/wiki/Musique
+
+Combiner sons et silences au cours du temps
 -->
 ---
 
@@ -73,6 +82,12 @@ Musique et rythme
 
 </v-click>
 
+<!--
+Définitions de wikipedia
+
+Organisation dans le temps des évènements musicaux
+-->
+
 ---
 
 # Définitions
@@ -88,10 +103,7 @@ Machine ou logiciel qui génère des boucles de batterie/percussions répétitiv
 - Musique assistée par ordinateur
 - Jeux vidéos
 
-- En musique comme en **frontend**, tout dépend de la **synchronisation**
-- Les UIs modernes réagissent en temps réel : **animations**, **streams**, **events**
-- Avec **RxJS** ou la **programmation réactive**, on orchestre les événements  
-  👉 comme une **partition musicale** : chaque action doit tomber juste.
+Il y en a des analogiques, des numériques et aussi des versions logicielles. Ensemble on va voir comment en coder une en JS
 -->
 ---
 
@@ -117,6 +129,10 @@ Problématique
 - https://toolstud.io/music/bpm.php?bpm=176&bpm_unit=4%2F4&base=16
 
 <img src="./images/score.png" class="max-w-100 h-auto rounded-lg shadow-lg object-contain" />
+
+<!--
+85 ms
+-->
 
 ---
 
@@ -154,11 +170,6 @@ function scheduler(){
 scheduler()
 ```
 <!--
-J'ai fouillé dans la documentation JS et j'ai vu qu'il y a une fonction pour déclencher un évènement après un temps précis
-SetInterval()
-
-Ensuite j'ai vu des débats et beaucoup d'utilisation de SetTimeout() en récursif
-
 De toute façon le récursif ça ne me fait pas peur je fonce
 -->
 
@@ -200,25 +211,7 @@ scheduler();
 
 # Construction d'une boite à rythme - naïve
 
-```mermaid
-gantt
-    dateFormat  HH:mm:ss
-    axisFormat  %S.%L s
-
-    section .
-    1 : vert, v1, 00:00:00, 0.000s
-    . :active, des1, after v1, 0.085s
-    2 : vert, v2, after des1, 0.000s
-    . :des2, after des1, 0.085s
-    3 : vert, v3, after des2, 0.000s
-    . :des3, after des2, 0.085s
-    4 : vert, v4, after des3, 0.000s
-
-    section .
-    . :active, des4, 00:00:00, 0.085s
-    . :crit, des5, after des4, 0.105s
-    . :des6, after des5, 0.085s
-```
+<img src="./images/setTimeoutSchema.png" class="h-auto object-contain" />
 
 ## Inconvénients
 - Précision à la milliseconde

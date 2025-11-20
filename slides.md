@@ -284,12 +284,12 @@ const lookahead = 0.100; // 100ms
 const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
 let kickBuffer: AudioBuffer, nextNoteTime = audioContext.currentTime, step = 0;
 
-fetch("https://soundcamp.org/sounds/381/kick/B/acoustic-kick-drum-one-shot-b-key-201-ywK.wav")
-    .then(res => res.arrayBuffer())
-    .then(data => audioContext.decodeAudioData(data))
-    .then(buffer => { kickBuffer = buffer; });
+fetch("https://corsproxy.io/?" + encodeURIComponent("https://soundcamp.org/sounds/381/kick/B/acoustic-kick-drum-one-shot-b-key-201-ywK.wav"))
+    .then(r => r.arrayBuffer())
+    .then(buf => audioContext.decodeAudioData(buf))
+    .then(buffer => { kickBuffer = buffer });
 
-function scheduler(): void {
+function scheduler() {
     while (nextNoteTime < audioContext.currentTime + lookahead) {
         scheduleNote(step, nextNoteTime);
         setNextNote();
@@ -297,7 +297,7 @@ function scheduler(): void {
     setTimeout(scheduler, 25); // 25ms
 }
 
-function scheduleNote(step: number, time: number): void {
+function scheduleNote(step: number, time: number) {
   if (pattern[step] === "X" && kickBuffer) {
     const source = audioContext.createBufferSource();
     source.buffer = kickBuffer;
@@ -306,9 +306,9 @@ function scheduleNote(step: number, time: number): void {
   }
 }
 
-function setNextNote(): void {
+function setNextNote() {
   nextNoteTime += 0.085; //85 ms
-  step = (step + 1) % pattern.length;
+  step = (step + 1);// % pattern.length;
 }
 
 scheduler();
@@ -316,6 +316,12 @@ scheduler();
 
 </div>
 
+
+<!--
+J'ai utilisé CorsProxy pour pouvoir fetch le .wav et contourner les restrictions de mon navigateur web
+
+J'utilise la fonction audio buffer qui me permet de stocker en mémoire le sample, échantillon
+-->
 ---
 
 # Construction d'une boite à rythme - synchronisée

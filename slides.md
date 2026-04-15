@@ -25,8 +25,8 @@ Aujourd'hui on va parler de javascript et de rythme
 - Présentation de DrumBeatRepo
 - Définitions
 - Construction d'une boîte à rythme
-  - **naïve**
-  - **synchronisée**
+  - Naïve
+  - Synchronisée
 
 
 ---
@@ -47,13 +47,29 @@ Musique et rythme
 
 ### Qu'est ce que la musique ?
 
+Caractéristiques :
+
 <v-click>
 
-Caractéristiques :
-- hauteur
-- nuance
-- timbre
-- **rythme**
+- Hauteur
+
+</v-click>
+
+<v-click>
+
+- Nuance
+
+</v-click>
+
+<v-click>
+
+- Timbre
+
+</v-click>
+
+<v-click>
+
+- **Rythme**
 
 </v-click>
 
@@ -91,7 +107,7 @@ Organisation dans le temps des évènements musicaux
 ---
 
 # Définitions
-Séquenceurs et boite à rythme
+Séquenceurs et boîte à rythme
 
 ### Roland 808
 
@@ -107,7 +123,7 @@ Il y en a des analogiques, des numériques et aussi des versions logicielles. En
 -->
 ---
 
-# Construction d'une boite à rythme
+# Construction d'une boîte à rythme
 Problématique
 
 ### Schéma rythmique
@@ -121,12 +137,12 @@ Problématique
 
 ---
 
-# Construction d'une boite à rythme
+# Construction d'une boîte à rythme
 Problématique
 
 ### Vitesse de lecture
+- [Beats-per-minute calculator: 176bpm](https://toolstud.io/music/bpm.php?bpm=176&bpm_unit=4%2F4&base=16)
 - 85 ms pour passer d'une case à l'autre avec un tempo de 176
-- https://toolstud.io/music/bpm.php?bpm=176&bpm_unit=4%2F4&base=16
 
 <img src="./images/score.png" class="max-w-100 h-auto rounded-lg shadow-lg object-contain" />
 
@@ -136,10 +152,10 @@ Problématique
 
 ---
 
-# Construction d'une boite à rythme - naïve
+# Construction d'une boîte à rythme - naïve
 _
 ## SetTimeout()
-- déclenche une fonction après un certain temps
+- Déclenche une fonction après un certain temps
 
 ```typescript  {monaco-run} {autorun:false}
 function scheduler(){
@@ -151,15 +167,12 @@ setTimeout(scheduler, 85);
 console.log("Fin");
 ```
 
-<!--
-permet de déclencher une fonction après un certain temps
--->
 ---
 
-# Construction d'une boite à rythme - naïve
+# Construction d'une boîte à rythme - naïve
 _
 ## SetTimeout() récursif
-- déclenche une fonction à interval de temps régulier
+- Déclenche une fonction à intervalles de temps réguliers
 
 ```typescript  {monaco-run} {autorun:false}
 function scheduler(){
@@ -175,22 +188,22 @@ De toute façon le récursif ça ne me fait pas peur je fonce
 
 ---
 
-# Construction d'une boite à rythme - naïve
+# Construction d'une boîte à rythme - naïve
 
 ```ts {monaco-run} {autorun:false}
 const pattern = ["X"," "," "," ","X"," "," "," ","X"," "," "," ","X"," "," "," "];
 const audio = new Audio('https://soundcamp.org/sounds/381/kick/B/acoustic-kick-drum-one-shot-b-key-201-ywK.wav');
 
-let step = 0;
+let index = 0;
 
 function scheduler(): void {
-    if (pattern[step] === "X") {
+    if (pattern[index] === "X") {
         audio.currentTime = 0;
         audio.play();
-        console.log(step);
+        console.log(index);
     }
 
-    step = (step + 1) // % pattern.length;
+    index = (index + 1) // % pattern.length;
     setTimeout(scheduler, 85); //85 ms
 }
 
@@ -199,7 +212,7 @@ scheduler();
 
 ---
 
-# Construction d'une boite à rythme - naïve
+# Construction d'une boîte à rythme - naïve
 
 <div class="w-full max-w-3xl mx-auto">
   <SlidevVideo controls class="w-full rounded-xl">
@@ -209,7 +222,7 @@ scheduler();
 
 ---
 
-# Construction d'une boite à rythme - naïve
+# Construction d'une boîte à rythme - naïve
 
 <img src="./images/setTimeoutSchema.png" class="h-auto object-contain" />
 
@@ -227,7 +240,7 @@ Dérive d’horloge → décalage progressif dans le temps (long terme).
 Jitter → fluctuations aléatoires d’un tick à l’autre (court terme).
 -->
 
-# Construction d'une boite à rythme - synchronisée
+# Construction d'une boîte à rythme - synchronisée
 
 💡 Au lieu de déclencher les sons au dernier moment, on planifie les événements à l’avance.
 
@@ -245,12 +258,12 @@ setTimeout(() => console.log(context.currentTime), 500);
 
 ---
 
-# Construction d'une boite à rythme - synchronisée
+# Construction d'une boîte à rythme - synchronisée
 
 <img src="./images/schema_v1.png" class="max-h-100 h-auto rounded-lg shadow-lg object-contain" />
 ---
 
-# Construction d'une boite à rythme - synchronisée
+# Construction d'une boîte à rythme - synchronisée
 ```mermaid
 sequenceDiagram
     autonumber
@@ -260,11 +273,11 @@ sequenceDiagram
     participant Speaker as Output
     
     JS->>Scheduler: Tick (every 25ms)
-    Scheduler->>Audio: Check nextNoteTime < currentTime + lookahead
+    Scheduler->>Audio: Check nextStepTime < currentTime + lookahead
     alt Time to schedule
-        Scheduler->>Audio: scheduleNote(step, nextNoteTime)
-        Audio->>Speaker: Play sample at nextNoteTime
-        Scheduler->>Scheduler: nextNoteTime += 0.085,    step+= 1
+        Scheduler->>Audio: scheduleStep(index, nextStepTime)
+        Audio->>Speaker: Play sample at nextStepTime
+        Scheduler->>Scheduler: nextStepTime += 0.085,    index+= 1
     else Not yet
         Scheduler-->>JS: Wait for next tick
     end
@@ -273,7 +286,7 @@ sequenceDiagram
 
 ---
 
-# Construction d'une boite à rythme - synchronisée
+# Construction d'une boîte à rythme - synchronisée
 
 <div style="max-height: 400px; overflow:auto;">
 
@@ -282,7 +295,7 @@ const pattern = ["X"," "," "," ","X"," "," "," ","X"," "," "," ","X"," "," "," "
 const lookahead = 0.100; // 100ms
 
 const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-let kickBuffer: AudioBuffer, nextNoteTime = audioContext.currentTime, step = 0;
+let kickBuffer: AudioBuffer, nextStepTime = audioContext.currentTime, index = 0;
 
 fetch("https://corsproxy.io/?" + encodeURIComponent("https://soundcamp.org/sounds/381/kick/B/acoustic-kick-drum-one-shot-b-key-201-ywK.wav"))
     .then(r => r.arrayBuffer())
@@ -290,15 +303,15 @@ fetch("https://corsproxy.io/?" + encodeURIComponent("https://soundcamp.org/sound
     .then(buffer => { kickBuffer = buffer });
 
 function scheduler() {
-    while (nextNoteTime < audioContext.currentTime + lookahead) {
-        scheduleNote(step, nextNoteTime);
-        setNextNote();
+    while (nextStepTime < audioContext.currentTime + lookahead) {
+        scheduleStep(index, nextStepTime);
+        setNextStep();
     }
     setTimeout(scheduler, 25); // 25ms
 }
 
-function scheduleNote(step: number, time: number) {
-  if (pattern[step] === "X" && kickBuffer) {
+function scheduleStep(index: number, time: number) {
+  if (pattern[index] === "X" && kickBuffer) {
     const source = audioContext.createBufferSource();
     source.buffer = kickBuffer;
     source.connect(audioContext.destination);
@@ -306,9 +319,9 @@ function scheduleNote(step: number, time: number) {
   }
 }
 
-function setNextNote() {
-  nextNoteTime += 0.085; //85 ms
-  step = (step + 1);// % pattern.length;
+function setNextStep() {
+  nextStepTime += 0.085; //85 ms
+  index = (index + 1);// % pattern.length;
 }
 
 scheduler();
@@ -331,7 +344,7 @@ J'utilise la fonction audio buffer qui me permet de stocker en mémoire le sampl
 -->
 ---
 
-# Construction d'une boite à rythme - synchronisée
+# Construction d'une boîte à rythme - synchronisée
 
 <div class="w-full max-w-3xl mx-auto">
   <SlidevVideo controls class="w-full rounded-xl">
@@ -345,13 +358,13 @@ J'utilise la fonction audio buffer qui me permet de stocker en mémoire le sampl
 _
 
 ### Notions
-- minuteur / timer
-- horloges / clock
+- Minuteur / timer
+- Horloge / clock
 
 <v-click>
 
 ### Solution
-- synchronisation d'horloge JavaScript avec horloge tierce (WebAudioAPI)
+- Synchronisation d'horloge JavaScript avec horloge tierce (WebAudioAPI)
 
 </v-click>
 
@@ -364,11 +377,16 @@ _
 
 </v-click>
 
+<!--
+On pourrait penser aux effets de changements de tempo et de timestrech
+Note : c'est dur à faire à la fois pour les musiciens et musiciennes et pour les machines
+-->
+
 ---
 
 # Merci !
 
---> **Baptiste Lyet** - Développeur .NET/Angular
+--> **Baptiste Lyet** - Développeur .NET/Angular 6/7 ans d'XP
 
 </> DrumBeatRepo : https://www.github.com/babali42/drumbeatrepo
 <img src="./images/qrcode.png" class="max-w-50 h-auto rounded-lg shadow-lg object-contain" />

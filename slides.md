@@ -10,7 +10,7 @@ themeConfig:
 # Javascript fait du bruit
 (mais en rythme)
 
-## Tremplin de Snowcamp 2026 : UX & Frontend
+## MixIt 2026 : Aliens
 
 **Baptiste Lyet**
 
@@ -368,7 +368,7 @@ _
 
 # Merci !
 
---> **Baptiste Lyet** - Développeur .NET/Angular @Sogilis
+--> **Baptiste Lyet** - Développeur .NET/Angular
 
 </> DrumBeatRepo : https://www.github.com/babali42/drumbeatrepo
 <img src="./images/qrcode.png" class="max-w-50 h-auto rounded-lg shadow-lg object-contain" />

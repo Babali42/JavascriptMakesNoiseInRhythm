@@ -5,6 +5,7 @@ lineNumbers: true
 themeConfig:
   title: Javascript fait du bruit... ...mais en rythme
   github: babali42/drumbeatrepo
+aspectRatio: 4/3
 ---
 
 # Javascript fait du bruit

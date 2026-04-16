@@ -152,7 +152,7 @@ Problématique
 
 ---
 
-# Construction d'une boîte à rythme - naïve
+# Construction d'une boîte à rythme naïve
 _
 ## SetTimeout()
 - Déclenche une fonction après un certain temps
@@ -169,8 +169,7 @@ console.log("Fin");
 
 ---
 
-# Construction d'une boîte à rythme - naïve
-_
+# Construction d'une boîte à rythme naïve
 ## SetTimeout() récursif
 - Déclenche une fonction à intervalles de temps réguliers
 
@@ -188,7 +187,9 @@ De toute façon le récursif ça ne me fait pas peur je fonce
 
 ---
 
-# Construction d'une boîte à rythme - naïve
+# Construction d'une boîte à rythme naïve
+
+<div style="max-height: 400px; overflow:auto;">
 
 ```ts {monaco-run} {autorun:false}
 const pattern = ["X"," "," "," ","X"," "," "," ","X"," "," "," ","X"," "," "," "];
@@ -210,9 +211,11 @@ function scheduler(): void {
 scheduler();
 ```
 
+</div>
+
 ---
 
-# Construction d'une boîte à rythme - naïve
+# Construction d'une boîte à rythme naïve
 
 <div class="w-full max-w-3xl mx-auto">
   <SlidevVideo controls class="w-full rounded-xl">
@@ -222,7 +225,7 @@ scheduler();
 
 ---
 
-# Construction d'une boîte à rythme - naïve
+# Construction d'une boîte à rythme naïve
 
 <img src="./images/setTimeoutSchema.png" class="h-auto object-contain" />
 
@@ -240,7 +243,7 @@ Dérive d’horloge → décalage progressif dans le temps (long terme).
 Jitter → fluctuations aléatoires d’un tick à l’autre (court terme).
 -->
 
-# Construction d'une boîte à rythme - synchronisée
+# Construction d'une boîte à rythme synchronisée
 
 💡 Au lieu de déclencher les sons au dernier moment, on planifie les événements à l’avance.
 
@@ -258,12 +261,12 @@ setTimeout(() => console.log(context.currentTime), 500);
 
 ---
 
-# Construction d'une boîte à rythme - synchronisée
+# Construction d'une boîte à rythme synchronisée
 
 <img src="./images/schema_v1.png" class="max-h-100 h-auto rounded-lg shadow-lg object-contain" />
 ---
 
-# Construction d'une boîte à rythme - synchronisée
+# Construction : boîte à rythme synchronisée
 ```mermaid
 sequenceDiagram
     autonumber
@@ -286,7 +289,7 @@ sequenceDiagram
 
 ---
 
-# Construction d'une boîte à rythme - synchronisée
+# Construction d'une boîte à rythme synchronisée
 
 <div style="max-height: 400px; overflow:auto;">
 
@@ -344,7 +347,7 @@ J'utilise la fonction audio buffer qui me permet de stocker en mémoire le sampl
 -->
 ---
 
-# Construction d'une boîte à rythme - synchronisée
+# Construction d'une boîte à rythme synchronisée
 
 <div class="w-full max-w-3xl mx-auto">
   <SlidevVideo controls class="w-full rounded-xl">
@@ -393,11 +396,3 @@ Note : c'est dur à faire à la fois pour les musiciens et musiciennes et pour l
 
 Source : A tales of two clocks - Chris Wilson - 2013
 
-
-
-
-<style>
-html {
-  font-size: 17px; /* 16 → 17px = 1.10× scale environ*/
-}
-</style>

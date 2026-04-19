@@ -134,7 +134,7 @@ Séquenceurs et boîte à rythme
 
 <img src="./TR08.avif" class="max-w-100 h-auto rounded-lg shadow-lg object-contain" />
 
-💡 Il y a aussi des séquenceurs dans les logiciels de vidéos et les jeux vidéos
+💡 Il y a aussi des séquenceurs dans les logiciels de montage vidéo et les jeux vidéos
 <!--
 Machine ou logiciel qui génère des boucles de batterie/percussions répétitives et utilise en interne un **séquenceur**
 

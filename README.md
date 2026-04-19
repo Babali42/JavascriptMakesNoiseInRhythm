@@ -1,7 +1,17 @@
 # Javascript fait du bruit mais en rythme
 
-## Lancer en local (avec node 20)
+## Diaporama en ligne
+
+https://babali42.github.io/JavascriptMakesSoundInRythmSlides/1
+
+## Lancer en local (avec node 20 ou 22 max)
+
+```
+git clone https://github.com/Babali42/JavascriptMakesNoiseInRhythm
+cd JavascriptMakesNoiseInRhythm
+npm i
 npm run dev
+```
 
 ## Slides exportées
 

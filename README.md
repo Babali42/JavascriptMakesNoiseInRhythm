@@ -2,7 +2,7 @@
 
 ## Diaporama en ligne
 
-https://babali42.github.io/JavascriptMakesSoundInRythmSlides/1
+https://babali42.github.io/JavascriptMakesNoiseInRhythm/1
 
 ## Lancer en local (avec node 20 ou 22 max)
 
